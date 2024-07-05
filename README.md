@@ -14,15 +14,11 @@ The key idea here is that when estimating the impact of a treatment, our goal is
 
 To summarize:
 
-Impact Estimate (D): The difference in observed outcomes between the treatment and control groups.
-Average Treatment Effect (ATE): The true effect of the treatment on the treated group.
-Selection Bias (B): The difference in potential outcomes between the treatment and control groups that is not due to the treatment.
-In the absence of selection bias, the impact estimate 
-𝐷
-D would equal the ATE. However, if selection bias is present, 
-𝐷
-D will be the sum of the ATE and the selection bias, leading to a biased estimate of the treatment's effect.<br>
-Keeping this equation in mind, I will go through; <br>
+Impact Estimate (D): The difference in observed outcomes between the treatment and control groups.<br>
+Average Treatment Effect (ATE): The true effect of the treatment on the treated group.<br>
+Selection Bias (B): The difference in potential outcomes between the treatment and control groups that is not due to the treatment.<br>
+In the absence of selection bias, the impact estimate, D would equal the ATE. However, if selection bias is present, D will be the sum of the ATE and the selection bias, leading to a biased estimate of the treatment's effect.<br>
+Keeping this in mind, I will do the following; <br>
 
 1. **Descriptive analysis** : Explore the dataset's characteristics and **see if there's a selection bias between the two groups**.
 2. **Simple difference** : Estimate the causal impact $D$ by simple difference, by tabular analysis and regression.
