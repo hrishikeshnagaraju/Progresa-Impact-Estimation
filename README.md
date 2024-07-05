@@ -10,16 +10,18 @@ For this project, I used data from the [Progresa program](http://en.wikipedia.or
 
 ## Strategy for impact evaluation
 
+The key idea here is that when estimating the impact of a treatment, our goal is to determine the Average Treatment Effect (ATE). However, our estimate can be biased if there is selection bias, which occurs when the treatment and control groups differ in ways other than the treatment itself.
 
-Before we start, I would like to review the fundumental framework of impact evaluation by comparison of treatment group and control group.<br>
-Let $D$ be our impact estimate, $Y_i$ is the ith data point, and $T_i$ is the treatment assignment of $Y_i$. Then we have, <br><br>
-$D = \mathrm E[Y_i(1)| T_i = 1] - \mathrm E[Y_i(0)| T_i = 0]$ <br>
-Then by adding the counterfactual $\mathrm E[Y_i(0)| T_i = 1]$ without breking the equation, we have<br>
-$D= \mathrm E[Y_i(1)| T_i = 1] - \mathrm E[Y_i(0)| T_i = 1] + \mathrm E[Y_i(0)| T_i = 1] - \mathrm E[Y_i(0) = 0 | T_i = 0]$ <br>
-$\quad= ATE +(\mathrm E[Y_i(0)| T_i = 1] - \mathrm E[Y_i(0) = 0 | T_i = 0])$,  with Average Treatment Effect(ATE) = $\mathrm E[Y_i(1)| T_i = 1] - \mathrm E[Y_i(0)| T_i = 1]$ <br>
-$\quad=ATE$ $+$ $B$,  with Selection Bias(B) $=(\mathrm E[Y_i(0)| T_i = 1] - \mathrm E[Y_i(0) = 0 | T_i = 0])$ <br><br>
+To summarize:
 
-What we want to estimate is ATE, so our estimate could be biased with this model, if there's a selection bias.<br>
+Impact Estimate (D): The difference in observed outcomes between the treatment and control groups.
+Average Treatment Effect (ATE): The true effect of the treatment on the treated group.
+Selection Bias (B): The difference in potential outcomes between the treatment and control groups that is not due to the treatment.
+In the absence of selection bias, the impact estimate 
+𝐷
+D would equal the ATE. However, if selection bias is present, 
+𝐷
+D will be the sum of the ATE and the selection bias, leading to a biased estimate of the treatment's effect.<br>
 Keeping this equation in mind, I will go through; <br>
 
 1. **Descriptive analysis** : Explore the dataset's characteristics and **see if there's a selection bias between the two groups**.
@@ -70,7 +72,7 @@ The data are actual data collected to evaluate the impact of the Progresa progra
 ### Data Exploration & null check
 
 I checked some statistics (mean, median and standard deviation) for all of the demographic variables in the dataset. 
-Also checked null values of each column.
+I also checked null values of each column.
 
 
 
@@ -433,7 +435,7 @@ summ
 
 ### Differences at baseline?
 
-Next, I will check the baseline (1997) demographic characteristics **for the poor**  different in treatment and control groups.<br>
+Next, I checked the baseline (1997) demographic characteristics **for the poor**  different in treatment and control groups.<br>
 I used a T-Test (p = 0.05 as threshold) to determine whether there is a statistically significant difference in the average values of each of the variables in the dataset.
 
 
@@ -911,4 +913,4 @@ plt.legend()
 - Other methods, such as simple differences, have serious flaws in their underlying assumptions and thus overestimated the causal impact up *3.19%*
 - It is really important to be aware of the underlying assumption of the method we use, and the limitation of perfect random assignment!
 
-# Thank you for listening!
+
